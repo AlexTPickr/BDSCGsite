@@ -1,0 +1,28 @@
+db.cards.insert({
+    cardId : 'BT1-036',
+    name : 'God Charge Vegeta',
+    rarity : 'R',
+    cardColour : 'blue',
+    energyCost : 6,
+    energyExclusive : 3,
+    comboCost : 1,
+    comboPower : 10000,
+    power : 25000,
+    type : 'battle',
+    traits : {
+        character : 'vegeta',
+        specialTrait : 'sayian',
+        era : 'Ressurection F saga'
+    },
+    description : {
+        evolve : {
+            evolveCost : 5,
+            evolveExclusive : 3,
+        },
+        dualAttack : 'true',
+        critical : 'true',
+        auto : {
+            text : 'When a card evolves into this card, choose up to 1 opponent battle card with BLOCKER and return it to their hand'
+        }
+    }
+})
