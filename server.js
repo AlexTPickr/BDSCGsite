@@ -1,22 +1,18 @@
-var http = require('http');
-var MongoClient = require('mongodb').MongoClient;
 var express = require('express');
-var url = "mongodb://localhost:27017/";
 var app = express();
+var MongoClient = require('mongodb').MongoClient;
+var bodyParser = require('body-parser');
+var db = require('./config/db');
 
-app.get('/', function (req, res) {
-  var data = MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("dbsuperdb");
-    var query = { rarity : "R" };
-    dbo.collection("cards").find(query).toArray(function(err, result) {
-      if (err) throw err;
-      //console.log(result);
-      db.close();
-      res.send(result);
-    });
+var port = 8080;
+app.use(bodyParser.urlencoded({ extended: true }));
+
+MongoClient.connect(db.url, (err, database) => {
+  if (err) return console.log(err)
+
+  require('./app/routes')(app, database);
+
+  app.listen(port, () => {
+    console.log('We are live on ' + port);
   });
-})
-
-app.listen(8080);
-console.log('Listening on port 8080...');
+});

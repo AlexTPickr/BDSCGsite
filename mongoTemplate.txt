@@ -26,3 +26,30 @@ db.cards.insert({
         }
     }
 })
+
+db.cards.insert({
+    cardId : 'BT2-083',
+    name : 'Martial Expert Tien Shinhan',
+    rarity : 'UC',
+    cardColour : 'green',
+    energyCost : 3,
+    energyExclusive : 2,
+    comboCost : 2,
+    comboPower : 10000,
+    power : 10000,
+    type : 'battle',
+    traits : {
+        character : 'Tien Shinhan',
+        specialTrait : 'Earthling',
+        era : 'Android Cell Saga'
+    },
+    description : {
+        auto : {
+            text : 'At the end of the battle after you combo with this card from your hand, if your leader card is green, play this card.'
+        },
+        activate : {
+            type : 'main',
+            text : 'Choose 1 card in your life and place it in the drop area: Choose 1 card in your life and add it to your hand. Then, choose up to 1 opponent battle card and KO that card.'
+        }
+    }
+})
