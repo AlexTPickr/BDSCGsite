@@ -1,4 +1,4 @@
-//rout files
+//route files
 var cardsRoutes = require('./cards_routes');
 var userRoutes = require('./user_routes');
 

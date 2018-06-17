@@ -1,9 +1,8 @@
+var CardsSchema = require('./schema/cards_schema')
+
 module.exports = function(app, db) {
 
     app.get('/cards', (req, res) => {
-        //set databse collection
-        console.log('db connection');
-        var dbo = db.db("dbsuperdb");
         
         //initial query - returns all in collection
         console.log('query setup');
@@ -27,7 +26,7 @@ module.exports = function(app, db) {
         
 
         //run and return results as json
-        dbo.collection('cards').find(query).toArray( (err, result) => {
+        CardsSchema.find(query, (err, result) => {
             console.log('query ran');
             if (err) { 
                 res.send({ 'error': 'An error has occurred' }); 
